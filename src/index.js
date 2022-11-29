@@ -1,5 +1,9 @@
 import Phaser from 'phaser';
 import logoImg from './assets/logo.png';
+import Circle from './assets/circle.png';
+import CircleMaker from './CircleMaker.js';
+
+let cirkelspawn;
 
 class MyGame extends Phaser.Scene
 {
@@ -11,28 +15,26 @@ class MyGame extends Phaser.Scene
     preload ()
     {
         this.load.image('logo', logoImg);
+        this.load.image('circle', Circle);
     }
       
     create ()
     {
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
+        cirkelspawn = new CircleMaker(this, 10, 10);
+        this.ScoreGame = this.add.text(10, 10, cirkelspawn.GetScore(), { font: '30px Courier', fill: '#00ff00' });
+    }
+
+    update(){
+        console.log(cirkelspawn.GetScore());
+        this.ScoreGame.setText(cirkelspawn.GetScore())
     }
 }
 
 const config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
-    width: 800,
-    height: 600,
+    width: 375,
+    height: 629,
     scene: MyGame
 };
 
