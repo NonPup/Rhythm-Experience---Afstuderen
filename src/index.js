@@ -50,7 +50,7 @@ class MyGame extends Phaser.Scene
         // creates circle for game through different class
         cirkelspawn = new CircleMaker(this, 10, 10);
         //spawns the circles every delay, repeats certain amount of times
-        timedEvent = this.time.addEvent({ delay: 500, callback: () => {
+        timedEvent = this.time.addEvent({ delay: 1000, callback: () => {
             cirkelspawn = new CircleMaker(this, 10, 10);
         }, callbackScope: this, repeat: 20, repeatCount: 0});
 
