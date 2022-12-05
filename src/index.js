@@ -3,6 +3,7 @@ import logoImg from './assets/logo.png';
 import Circle from './assets/circle.png';
 import CircleMaker from './CircleMaker.js';
 import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
+//import CrackerIsland from './assets/crackerisland.mp4';
 
 let cirkelspawn;
 let timedEvent;
@@ -20,10 +21,16 @@ class MyGame extends Phaser.Scene
         this.load.image('logo', logoImg);
         this.load.image('circle', Circle);
         this.load.webfont('Bebas Neue', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+        //this.load.video('wormhole', CrackerIsland, 'loadeddata', false, true);
     }
       
     create ()
     {
+        //this.video = this.add.video(300, 200, 'wormhole');
+
+        //this.video.play();
+
         //score keeper
         this.score = 0;
 
@@ -34,10 +41,11 @@ class MyGame extends Phaser.Scene
             cirkelspawn = new CircleMaker(this, 10, 10);
         }, callbackScope: this, repeat: 20, repeatCount: 0});
 
+        
         // shows score on screen
-        this.ScoreGame = this.add.text(24, 32, this.score, { font: '28px Bebas Neue', fill: '#FFFFFF' });
+        this.ScoreGame = this.add.text(24, 32, parseInt(this.score), { font: '28px Bebas Neue', fill: '#FFFFFF' });
         //show percentage of how many you hit
-        this.PercentageGame = this.add.text(24, 65, (this.score/200*100).toFixed(0) + '%', { font: '24px Bebas Neue', fill: '#E85A95' });
+        this.PercentageGame = this.add.text(24, 65, (parseInt(this.score)/200*100).toFixed(0) + '%', { font: '24px Bebas Neue', fill: '#E85A95' });
         
     }
 
