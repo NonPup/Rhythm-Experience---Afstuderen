@@ -1,19 +1,18 @@
 import Phaser from 'phaser';
 
-export default class CircleMaker extends Phaser.GameObjects.Container
-{
-    constructor (scene, x, y, children)
-    {
+export default class CircleMaker extends Phaser.GameObjects.Container {
+    constructor(scene, x, y, children) {
         super(scene, x, y, children);
         this.scene.add.existing(this)
 
+        //makes r3 variable to spawn cirkle and radiuscheck boolean
         this.r3;
         this.checkradius = false;
 
         // making gameobjects
         this.circle = this.scene.add.image(100, 200, 'circle');
         let RadiusCircle = 80;
-        
+
         //add circle
         this.r3 = this.scene.add.circle(100, 200, RadiusCircle);
         //give circle line look
@@ -26,18 +25,18 @@ export default class CircleMaker extends Phaser.GameObjects.Container
         this.setPosition(Phaser.Math.Between(0, 215), Phaser.Math.Between(0, 359))
 
         // on click event of circle image
-        this.circle.setInteractive().on('pointerdown', function(pointer, localX, localY, event){
+        this.circle.setInteractive().on('pointerdown', function (pointer, localX, localY, event) {
             //checks if radius is less or equal to the radius of the other circle and makes the check true or false according to the answer
-            if (this.r3.radius <= 42){
+            if (this.r3.radius <= 42) {
                 this.checkradius = true;
-            }else {
+            } else {
                 this.checkradius = false;
-                 }
+            }
 
             // turn circle image and outline circle off
             this.DeleteCircle();
 
-        },this);
+        }, this);
 
 
         // movement of outline circle
@@ -46,22 +45,22 @@ export default class CircleMaker extends Phaser.GameObjects.Container
             radius: 34,
             repeat: 0,
             ease: 'Sine.easeInOut'
-            
+
         });
 
         // turn circle image and outline circle off on complete animation
-        CircleTween.on('complete',() => {
+        CircleTween.on('complete', () => {
             this.DeleteCircle();
         }, this)
 
     }
-    
+
     // function to get the score
-    GetScore(){
+    GetScore() {
         return this.score
     }
 
-    ReturnRadius(){
+    ReturnRadius() {
         return this.checkradius
     }
 
@@ -72,7 +71,7 @@ export default class CircleMaker extends Phaser.GameObjects.Container
     // }
 
     // hides circle
-    DeleteCircle(){
+    DeleteCircle() {
         this.r3.setVisible(false);
         this.r3.setActive(false);
         this.circle.setVisible(false);
@@ -80,7 +79,7 @@ export default class CircleMaker extends Phaser.GameObjects.Container
     }
 
     // puts the check of the radius to false again
-    DisableRadius(){
+    DisableRadius() {
         this.checkradius = false;
     }
 }
