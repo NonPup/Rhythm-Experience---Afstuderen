@@ -5,8 +5,8 @@ export default class CircleMaker extends Phaser.GameObjects.Container {
         super(scene, x, y, children);
         this.scene.add.existing(this)
 
-        //makes r3 variable to spawn cirkle and radiuscheck boolean
-        this.r3;
+        //makes circleout variable to spawn cirkle and radiuscheck boolean
+        this.circleout;
         this.checkradius = false;
 
         // making gameobjects
@@ -14,12 +14,12 @@ export default class CircleMaker extends Phaser.GameObjects.Container {
         let RadiusCircle = 80;
 
         //add circle
-        this.r3 = this.scene.add.circle(100, 200, RadiusCircle);
+        this.circleout = this.scene.add.circle(100, 200, RadiusCircle);
         //give circle line look
-        this.r3.setStrokeStyle(3, 0xE85A95);
+        this.circleout.setStrokeStyle(3, 0xE85A95);
 
         // add image and circle to container
-        this.add([this.circle, this.r3])
+        this.add([this.circle, this.circleout])
 
         // set container position (also move it)
         this.setPosition(Phaser.Math.Between(0, 215), Phaser.Math.Between(0, 359))
@@ -27,7 +27,7 @@ export default class CircleMaker extends Phaser.GameObjects.Container {
         // on click event of circle image
         this.circle.setInteractive().on('pointerdown', function (pointer, localX, localY, event) {
             //checks if radius is less or equal to the radius of the other circle and makes the check true or false according to the answer
-            if (this.r3.radius <= 42) {
+            if (this.circleout.radius <= 42) {
                 this.checkradius = true;
             } else {
                 this.checkradius = false;
@@ -41,7 +41,7 @@ export default class CircleMaker extends Phaser.GameObjects.Container {
 
         // movement of outline circle
         const CircleTween = this.scene.tweens.add({
-            targets: this.r3,
+            targets: this.circleout,
             radius: 34,
             repeat: 0,
             ease: 'Sine.easeInOut'
@@ -65,15 +65,15 @@ export default class CircleMaker extends Phaser.GameObjects.Container {
     }
 
     // UpdateScore(){
-    //     if (this.r3.radius <= 42){
+    //     if (this.circleout.radius <= 42){
     //         this.score++;
     //     }
     // }
 
     // hides circle
     DeleteCircle() {
-        this.r3.setVisible(false);
-        this.r3.setActive(false);
+        this.circleout.setVisible(false);
+        this.circleout.setActive(false);
         this.circle.setVisible(false);
         this.circle.setActive(false);
     }

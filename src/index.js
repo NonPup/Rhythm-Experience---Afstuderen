@@ -41,7 +41,7 @@ const config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
     width: 374,
-    height: 680,
+    height: 700,
     scene: [Start, Spotify, Loading, GetReady, MyGame, Final],
     // webfont plugin
     plugins: {

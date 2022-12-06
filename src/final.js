@@ -42,8 +42,8 @@ export default class Final extends Phaser.Scene {
         }, this);
 
         this.welldone = this.add.text(24, 96, 'Well done! you hit', { font: '40px Bebas Neue', fill: '#FFFFFF' });
-        this.welldone = this.add.text(24, 136, 'of all the notes!', { font: '40px Bebas Neue', fill: '#FFFFFF' });
-        this.welldone = this.add.text(160, 300, `${Math.ceil(this.score / 48 * 100)} %`, { font: '40px Bebas Neue', fill: '#E85A95' });
+        this.welldone2 = this.add.text(24, 136, 'of all the notes!', { font: '40px Bebas Neue', fill: '#FFFFFF' });
+        this.welldone3 = this.add.text(272, 96, `${Math.ceil(this.score / 48 * 100)}%`, { font: '40px Bebas Neue', fill: '#E85A95' });
 
         console.log(this.score);
 
