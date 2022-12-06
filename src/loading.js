@@ -21,7 +21,7 @@ export default class Loading extends Phaser.Scene {
         this.scene.start("GetReady");
     }
 
-    FadeOut(){
+    FadeOut() {
         this.cameras.main.fadeOut(500, 0, 0, 0);
     }
 

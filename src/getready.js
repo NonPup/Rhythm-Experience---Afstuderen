@@ -33,9 +33,9 @@ export default class GetReady extends Phaser.Scene {
             delay: 1000, callback: () => {
                 this.counting = this.counting - 1;
                 this.countdown.setText(this.counting)
-                console.log('beep')
-                if (this.counting == 1){
-                    this.cameras.main.fadeOut(1000, 0, 0, 0);}
+                if (this.counting == 1) {
+                    this.cameras.main.fadeOut(500, 0, 0, 0);
+                }
             }, callbackScope: this, repeat: 3, repeatCount: 0
         });
         //timedEvent = this.time.delayedCall(3000, this.NextScene, [], this);
