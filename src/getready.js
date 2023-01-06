@@ -1,8 +1,7 @@
 import Phaser from 'phaser';
-import Loadingbg from './assets/loadingbg.png';
-import Colorbg from './assets/colorbg.png';
 import MyGame from './Game.js';
 import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
+import Scaling from './Scaling.js';
 
 let timedEvent;
 
@@ -13,7 +12,7 @@ export default class GetReady extends Phaser.Scene {
 
     // load in assets
     preload() {
-        this.load.image('colorbg', Colorbg);
+        this.load.image('colorbg', Scaling.imagePath("colorbg", "png"));
         this.load.webfont('Bebas Neue', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
     }
 
@@ -25,9 +24,9 @@ export default class GetReady extends Phaser.Scene {
     create() {
         this.cameras.main.fadeIn(500, 0, 0, 0);
         this.counting = 3;
-        this.colorbg = this.add.image(187, 350, 'colorbg');
+        this.colorbg = this.add.image(Scaling.getPixelbyDPR(187), Scaling.getPixelbyDPR(350), 'colorbg');
 
-        this.countdown = this.add.text(160, 300, this.counting, { font: '72px Bebas Neue', fill: '#FFFFFF' });
+        this.countdown = this.add.text(Scaling.getPixelbyDPR(160), Scaling.getPixelbyDPR(300), this.counting, { font: `${Scaling.getPixelbyDPR(72)}px Bebas Neue`, fill: '#FFFFFF' });
 
         timedEvent = this.time.addEvent({
             delay: 1000, callback: () => {

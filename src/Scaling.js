@@ -3,7 +3,7 @@ export default class Scaling {
     //Base values
     static GAME_BASE_WIDTH = 375;
     static GAME_BASE_HEIGHT = 667;
-    static GAME_BASE_DIFF_HEIGHT = 1;
+    static GAME_BASE_DIFF_HEIGHT = (window.innerHeight / Scaling.GAME_BASE_HEIGHT) > 1 ? (window.innerHeight / Scaling.GAME_BASE_HEIGHT) : 1;
 
     //Calculated sizes/ratios
     static GAME_WIDTH = Scaling.GAME_BASE_WIDTH;

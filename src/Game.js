@@ -1,13 +1,8 @@
 import Phaser from 'phaser';
-import logoImg from './assets/logo.png';
-import Circle from './assets/circle.png';
-import Bottom from './assets/bottom.png';
-import Top from './assets/top.png';
-import Overlay from './assets/overlay.png';
 import CircleMaker from './CircleMaker.js';
 import Final from './final.js';
 import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
-//import CrackerIsland from './assets/crackerisland.mp4';
+import Scaling from './Scaling.js';
 
 let cirkelspawn;
 let timedEvent;
@@ -19,20 +14,20 @@ export default class MyGame extends Phaser.Scene {
 
     // load in assets
     preload() {
-        this.load.image('logo', logoImg);
-        this.load.image('circle', Circle);
-        this.load.image('bottom', Bottom);
-        this.load.image('top', Top);
-        this.load.image('overlay', Overlay);
+        this.load.image('circle', Scaling.imagePath("circle", "png"));
+        this.load.image('bottom', Scaling.imagePath("bottom", "png"));
+        this.load.image('top', Scaling.imagePath("top", "png"));
+        this.load.image('overlay', Scaling.imagePath("overlay", "png"));
         this.load.webfont('Bebas Neue', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-        this.load.video('crackerisland', './src/assets/crackerisland-edit.mp4', 'loadeddata', false, false);
+        this.load.video('crackerisland', Scaling.imagePath("crackerisland-edit", "mp4"), 'loadeddata', false, false);
+        this.load.audio('beat', './src/assets/beat.mp3');
     }
 
     create() {
         this.cameras.main.fadeIn(500, 0, 0, 0)
         //creates video
-        let vid = this.video = this.add.video(180, 360, 'crackerisland');
+        let vid = this.video = this.add.video(Scaling.getPixelbyDPR(180), Scaling.getPixelbyDPR(360), 'crackerisland');
 
         //plays video
         this.video.play();
@@ -43,27 +38,35 @@ export default class MyGame extends Phaser.Scene {
         //score keeper
         this.score = 0;
 
+        //add audio
+        this.beat = this.sound.add('beat', {loop: false})
+
+        //on click drum sound
+        this.input.on('pointerdown', function(){
+            this.beat.play();
+        },this);
+
+
         //bit of a fade top and bottom
-        this.bottom = this.add.image(187, 600, 'bottom');
-        this.top = this.add.image(187, 100, 'top');
+        this.bottom = this.add.image(Scaling.getPixelbyDPR(187), Scaling.getPixelbyDPR(600), 'bottom');
+        this.top = this.add.image(Scaling.getPixelbyDPR(187), Scaling.getPixelbyDPR(100), 'top');
 
         // seethrough overlay
-        this.overlay = this.add.image(187, 310, 'overlay');
+        this.overlay = this.add.image(Scaling.getPixelbyDPR(187), Scaling.getPixelbyDPR(310), 'overlay');
 
         // creates circle for game through different class
-        cirkelspawn = new CircleMaker(this, 10, 10);
+        cirkelspawn = new CircleMaker(this, Scaling.getPixelbyDPR(10), Scaling.getPixelbyDPR(10));
         //spawns the circles every delay, repeats certain amount of times
         timedEvent = this.time.addEvent({
             delay: 1000, callback: () => {
-                cirkelspawn = new CircleMaker(this, 10, 10);
+                cirkelspawn = new CircleMaker(this, Scaling.getPixelbyDPR(10), Scaling.getPixelbyDPR(10));
             }, callbackScope: this, repeat: 48, repeatCount: 0
         });
 
-
         // shows score on screen
-        this.ScoreGame = this.add.text(24, 32, this.score, { font: '28px Bebas Neue', fill: '#FFFFFF' });
+        this.ScoreGame = this.add.text(Scaling.getPixelbyDPR(24), Scaling.getPixelbyDPR(32), this.score, { font: `${Scaling.getPixelbyDPR(28)}px Bebas Neue`, fill: '#FFFFFF' });
         //show percentage of how many you hit
-        this.PercentageGame = this.add.text(24, 65, this.score / 48 * 100 + '%', { font: '24px Bebas Neue', fill: '#E85A95' });
+        this.PercentageGame = this.add.text(Scaling.getPixelbyDPR(24), Scaling.getPixelbyDPR(65), this.score / 48 * 100 + '%', { font: `${Scaling.getPixelbyDPR(24)}px Bebas Neue`, fill: '#E85A95' });
 
         this.video.on('complete', function(video){
             this.scene.start("Final");
@@ -81,6 +84,7 @@ export default class MyGame extends Phaser.Scene {
         //updates the score to show the right amount on screen from class CircleMaker
         this.ScoreGame.setText(this.score)
         this.PercentageGame.setText(Math.ceil(this.score / 48 * 100) + '%')
+        
 
 
     }
