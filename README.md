@@ -2,7 +2,7 @@
 
 Mijn Phaser 3 afstudeerproject gemaakt met ES6 support via [Babel 7](https://babeljs.io/) en [Webpack 4](https://webpack.js.org/).
 
-De gebruikte template is geupdate voor de Phaser 3.50.0 versie en daarboven.
+De gebruikte template (https://github.com/photonstorm/phaser3-project-template) is geupdate voor de Phaser 3.50.0 versie en daarboven.
 
 ## Requirements
 
