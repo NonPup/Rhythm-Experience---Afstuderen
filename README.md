@@ -19,6 +19,7 @@ De gebruikte template (https://github.com/photonstorm/phaser3-project-template) 
 ## Experience testen
 Om de experience te doen open je de repo in je editor en run je de terminal. Hier gebruik je 'npm start' en dit opent een pagina voor je.
 Om deze goed te draaien kan je kiezen om dit via localhost te doen of via je IP4 nummer (deze kan je vinden in je cmd op je computer en dan ipconfig in te typen en op enter te drukken)
+
 `http://localhost:8080`
 `http://JouwIP4:8080`
 
