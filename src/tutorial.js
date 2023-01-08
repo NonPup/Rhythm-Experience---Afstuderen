@@ -12,7 +12,7 @@ export default class Loading extends Phaser.Scene {
 
     // load in assets
     preload() {
-        this.load.video('tutorial', Scaling.imagePath("tutorial", "mp4"), 'loadeddata', false, false);
+        this.load.video('tutorial', Scaling.imagePath("tutorial2", "mp4"), 'loadeddata', false, false);
     }
     //the next scene will start when this gets called
     NextScene() {
@@ -36,9 +36,9 @@ export default class Loading extends Phaser.Scene {
         vid.setPaused(false);
 
         //after a set time the screen will fade out
-        timedEvent = this.time.delayedCall(5000, this.FadeOut, [], this);
+        timedEvent = this.time.delayedCall(6500, this.FadeOut, [], this);
         //after a set time the next scene will start
-        timedEvent = this.time.delayedCall(6000, this.NextScene, [], this);
+        timedEvent = this.time.delayedCall(7000, this.NextScene, [], this);
 
 
     }

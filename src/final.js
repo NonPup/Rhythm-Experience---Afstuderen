@@ -42,7 +42,7 @@ export default class Final extends Phaser.Scene {
         //adds button
         this.playagain = this.add.image(Scaling.getPixelbyDPR(187), Scaling.getPixelbyDPR(400), 'playagain');
 
-        //on button play again it will start the get ready scene to play the game again
+        //on button play again it will start the Loading scene to play the game again
         this.playagain.setInteractive().on('pointerdown', function (pointer, localX, localY, event) {
             this.scene.start("Loading");
 
