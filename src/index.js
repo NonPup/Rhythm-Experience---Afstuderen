@@ -4,6 +4,7 @@ import Loading from './loading.js';
 import MyGame from './Game.js';
 import GetReady from './getready.js';
 import Final from './final.js';
+import Tutorial from './tutorial.js';
 import { WebFontLoaderPlugin } from 'phaser3-webfont-loader';
 import Scaling from './Scaling.js';
 
@@ -49,7 +50,7 @@ const config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    scene: [Start, Spotify, Loading, GetReady, MyGame, Final],
+    scene: [Start, Spotify, Loading, Tutorial, GetReady, MyGame, Final],
     // webfont plugin
     plugins: {
         global: [{

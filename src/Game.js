@@ -20,7 +20,7 @@ export default class MyGame extends Phaser.Scene {
         this.load.image('overlay', Scaling.imagePath("overlay", "png"));
         this.load.webfont('Bebas Neue', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-        this.load.video('crackerisland', Scaling.imagePath("crackerisland-edit", "mp4"), 'loadeddata', false, false);
+        this.load.video('crackerisland', Scaling.imagePath("crackerisland-edito", "mp4"), 'loadeddata', false, false);
         this.load.audio('beat', './src/assets/beat.mp3');
     }
 
@@ -42,7 +42,7 @@ export default class MyGame extends Phaser.Scene {
         this.beat = this.sound.add('beat', {loop: false})
 
         //on click drum sound
-        this.input.on('pointerdown', function(){
+        this.input.on('pointerdown', function(pointer, localX, localY, event){
             this.beat.play();
         },this);
 
@@ -60,7 +60,7 @@ export default class MyGame extends Phaser.Scene {
         timedEvent = this.time.addEvent({
             delay: 1000, callback: () => {
                 cirkelspawn = new CircleMaker(this, Scaling.getPixelbyDPR(10), Scaling.getPixelbyDPR(10));
-            }, callbackScope: this, repeat: 48, repeatCount: 0
+            }, callbackScope: this, repeat: 46, repeatCount: 0
         });
 
         // shows score on screen
@@ -83,6 +83,7 @@ export default class MyGame extends Phaser.Scene {
 
         //updates the score to show the right amount on screen from class CircleMaker
         this.ScoreGame.setText(this.score)
+        //Max score is 48, so that should be 100%
         this.PercentageGame.setText(Math.ceil(this.score / 48 * 100) + '%')
         
 
