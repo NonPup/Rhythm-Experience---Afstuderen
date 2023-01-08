@@ -18,7 +18,7 @@ De gebruikte template (https://github.com/photonstorm/phaser3-project-template) 
 
 ## Experience testen
 Om de experience te doen open je de repo in je editor en run je de terminal. Hier gebruik je 'npm start' en dit opent een pagina voor je.
-Om deze goed te draaien kan je kiezen om dit via localhost te doen of via je IP4 nummer (deze kan je vinden in je cmd op je computer en dan ipconfig in te typen en op enter te drukken)
+Om deze goed te draaien kan je kiezen om dit via localhost te doen of via je IP4 nummer (deze kan je vinden in je cmd op je computer en dan ipconfig in te typen en op enter te drukken). Als je naar de IP4 gaat kan je hem ook runnen op je telefoon.
 
 `http://localhost:8080`
 `http://JouwIP4:8080`
@@ -47,7 +47,7 @@ The template used has been updated for Phaser 3.50.0 version and above.
 
 ## Experience testing
 To do the experience open the repo in your editor and run the terminal. Here you use 'npm start' and this will open a page for you.
-To run it properly you can choose to do this via localhost or via your IP4 number (you can find this in your cmd on your computer and then type ipconfig and then press enter)
+To run it properly you can choose to do this via localhost or via your IP4 number (you can find this in your cmd on your computer and then type ipconfig and then press enter). If you go to the IP4 you can also run it on your phone.
 
 `http://localhost:8080`
 `http://YourIP4:8080`
